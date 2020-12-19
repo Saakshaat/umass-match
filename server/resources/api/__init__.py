@@ -10,3 +10,9 @@ session_dep = session_dependency()
 @main_router.get("/", status_code=200)
 async def root():
     return {"msg": "Welcome to UMass Match!"}
+
+
+from .user import user_router
+
+# add individual routers to top-level router
+main_router.include_router(user_router)
