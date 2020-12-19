@@ -4,7 +4,8 @@ from pydantic import BaseModel, validator
 
 
 class Contact(BaseModel):
-    user_id: int
+    id: int = None
+    user_id: int = None
     discord: str = None
     phone: int = None
     snapchat: str = None
@@ -21,3 +22,6 @@ class Contact(BaseModel):
         if not bool(re.match('[0-9]{10}$', str(v))):
             raise ValueError('Phone Number must be valid 10 digit number')
         return v
+
+    class Config:
+        orm_mode = True
