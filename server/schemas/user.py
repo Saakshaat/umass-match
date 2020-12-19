@@ -2,12 +2,15 @@ import re
 
 from pydantic import BaseModel, validator
 
+from .contact import Contact
+
 
 class UserGeneral(BaseModel):
     first_name: str
     middle_name: str = None
     last_name: str
     email: str
+    contacts: Contact = None
 
 
 class UserPost(UserGeneral):
