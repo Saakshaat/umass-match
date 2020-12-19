@@ -34,7 +34,6 @@ def create_single_resource_with_dependents(model: Model, data: BaseModel, db):
 
         if relationship.uselist:  # one-to-many or many-to-one relationship
             relationship_list = getattr(primary_resource, relationship.key)
-            # TODO: test
             relationship_list.extend(
                 [create_relationship_model(single_data_element, relationship) for single_data_element in data])
             setattr(primary_resource, relationship.key, relationship_list)
