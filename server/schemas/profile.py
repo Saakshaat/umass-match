@@ -2,12 +2,13 @@ from typing import List
 
 from pydantic import BaseModel
 
-from models.enums import UMassResidence
+from models.enums import UMassResidence, Clubs
 
 
-class Preference(BaseModel):
+class Profile(BaseModel):
     user_id: int = None
     umass_residences: List[UMassResidence] = []
+    clubs: List[Clubs] = []
 
     class Config:
         orm_mode = True

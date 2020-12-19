@@ -12,5 +12,5 @@ class User(Model, IDMixin):
     email = Column(String, nullable=False)
     # major = enum
     contacts = relationship("Contact", uselist=False)
-    preferences = relationship("Preference", uselist=False)
+    preferences = relationship("Profile", uselist=False)
     # matches: self-referential (https://docs.sqlalchemy.org/en/14/orm/self_referential.html)

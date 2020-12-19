@@ -5,7 +5,7 @@ from .enums import UMassResidence, Clubs
 from .types import ArrayOfEnum
 
 
-class Preference(Model, IDMixin):
+class Profile(Model, IDMixin):
     __tablename__ = 'preference'
 
     user_id = Column(Integer, ForeignKey('user.id'))

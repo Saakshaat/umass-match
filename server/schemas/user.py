@@ -3,7 +3,7 @@ import re
 from pydantic import BaseModel, validator
 
 from .contact import Contact
-from .preference import Preference
+from .profile import Profile
 
 
 class UserGeneral(BaseModel):
@@ -12,7 +12,7 @@ class UserGeneral(BaseModel):
     last_name: str
     email: str
     contacts: Contact
-    preferences: Preference
+    preferences: Profile
 
 
 class UserPost(UserGeneral):
