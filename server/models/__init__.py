@@ -1,5 +1,6 @@
 from .base import Model
 
 from . import (
-    user
+    user,
+    contact
 )
