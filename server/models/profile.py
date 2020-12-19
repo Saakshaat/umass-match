@@ -14,7 +14,8 @@ class Profile(Model, IDMixin):
     clubs = Column(ArrayOfEnum(Enum(Club)))
 
     majors = Column(ArrayOfEnum(Enum(Major)), nullable=False)
+    grad_year = Column(Integer, nullable=False)
 
-    video_games = Column(Boolean, nullable=False)  # shift to ArrayOfEnum for what kind of video games
-    music = Column(Boolean, nullable=False)  # shift to ArrayOfEnum for what kind of music
-    movies = Column(Boolean, nullable=False)  # shift to ArrayOfEnum for what kind of movies
+    video_games = Column(Boolean, nullable=True)  # shift to ArrayOfEnum for what kind of video games
+    music = Column(Boolean, nullable=True)  # shift to ArrayOfEnum for what kind of music
+    movies = Column(Boolean, nullable=True)  # shift to ArrayOfEnum for what kind of movies
