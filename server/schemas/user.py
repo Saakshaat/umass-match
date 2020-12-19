@@ -11,7 +11,7 @@ class UserGeneral(BaseModel):
 
 
 class UserPost(UserGeneral):
-    @validator('email', always=True)
+    @validator('email')
     def validate_umass_email(cls, v):
         if not bool(re.match('^..*@umass\.edu', v)):
             raise ValueError('Email should belong to a UMass domain')
