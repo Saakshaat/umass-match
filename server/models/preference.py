@@ -9,4 +9,4 @@ class Preference(Model, IDMixin):
     __tablename__ = 'preference'
 
     user_id = Column(Integer, ForeignKey('user.id'))
-    umass_residences = Column(ArrayOfEnum(Enum(UMassResidence), default=UMassResidence.unknown))
+    umass_residences = Column(ArrayOfEnum(Enum(UMassResidence)))
