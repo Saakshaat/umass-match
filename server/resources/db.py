@@ -2,7 +2,7 @@ from fastapi import Depends
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
-DATABASE_URL = 'sqlite:///memory'  # change to Postgres instance in docker-compose
+DATABASE_URL = 'postgresql+psycopg2://staging_user:staging_password@database:5432/staging_db'
 
 
 def session_dependency() -> Depends:
