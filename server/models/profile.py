@@ -12,7 +12,9 @@ class Profile(Model, IDMixin):
 
     umass_residences = Column(ArrayOfEnum(Enum(UMassResidence)))
     clubs = Column(ArrayOfEnum(Enum(Club)))
+
     majors = Column(ArrayOfEnum(Enum(Major)), nullable=False)
+    
     video_games = Column(Boolean)  # shift to ArrayOfEnum for what kind of video games
     music = Column(Boolean)  # shift to ArrayOfEnum for what kind of music
     movies = Column(Boolean)  # shift to ArrayOfEnum for what kind of movies
