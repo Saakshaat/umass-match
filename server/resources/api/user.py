@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
 from models import user as user_model
+from resources.crud import create
 from schemas import user as user_schemas
 from . import session_dep
 
@@ -9,13 +10,7 @@ user_router = APIRouter()
 
 @user_router.post("/user/", response_model=user_schemas.UserGet, status_code=201)
 async def create_single_user(user_data: user_schemas.UserPost, db=session_dep):
-    user_row = user_model.User(**user_data.dict())
-
-    db.add(user_row)
-    db.commit()
-    db.refresh(user_row)
-
-    return user_row
+    return create.create_single_resource(model=user_model.User, data=user_data, db=db)
 
 
 @user_router.get("/user/{user_id}/", response_model=user_schemas.UserGet, status_code=200)
