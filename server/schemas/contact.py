@@ -18,6 +18,6 @@ class Contact(BaseModel):
 
     @validator('phone')
     def validate_phone(cls, v):
-        if not bool(re.match('[0-9]{10}$', v)):
+        if not bool(re.match('[0-9]{10}$', str(v))):
             raise ValueError('Phone Number must be valid 10 digit number')
         return v
