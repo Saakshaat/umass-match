@@ -9,8 +9,9 @@ class User(Model, IDMixin):
     first_name = Column(String, nullable=False)
     middle_name = Column(String, nullable=True)
     last_name = Column(String, nullable=False)
+
     email = Column(String, nullable=False)
-    # major = enum
     contacts = relationship("Contact", uselist=False)
-    # preferences = another model
+
+    profile = relationship("Profile", uselist=False)
     # matches: self-referential (https://docs.sqlalchemy.org/en/14/orm/self_referential.html)
