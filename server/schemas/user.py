@@ -12,7 +12,7 @@ class UserGeneral(BaseModel):
     last_name: str
     email: str
     contacts: Contact
-    preferences: Profile
+    profile: Profile
 
 
 class UserPost(UserGeneral):
