@@ -1,9 +1,7 @@
-from sqlalchemy import Column, String, Enum
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
 from .base import Model, IDMixin
-from .enums import Major
-from .types import ArrayOfEnum
 
 
 class User(Model, IDMixin):
@@ -15,6 +13,5 @@ class User(Model, IDMixin):
     email = Column(String, nullable=False)
     contacts = relationship("Contact", uselist=False)
 
-    majors = Column(ArrayOfEnum(Enum(Major)), nullable=False)
-    preferences = relationship("Profile", uselist=False)
+    profile = relationship("Profile", uselist=False)
     # matches: self-referential (https://docs.sqlalchemy.org/en/14/orm/self_referential.html)
