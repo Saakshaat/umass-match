@@ -14,7 +14,7 @@ body, #root{
     margin: 0;
     background-color: #F0F0F0;
     /* Children component's margins were pushing container outwards */
-    overflow:auto;
+    /* overflow:auto; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,4 +84,38 @@ body, #root{
 .main-func p{
     margin: 0;
     font-size: 0.9rem;
+}
+
+.match-found {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.congrats {
+    margin-bottom: 0
+}
+
+.match-tagline{
+    color:  #7A0002;
+    margin-bottom: 0;
+}
+
+.match-found p {
+    color:  #7A0002;
+    margin: 0
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profDetails, .contacts {
+    margin: 0 1rem;
+    text-align: left;
 }

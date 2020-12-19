@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './Styles/app.css'
 import Navbar from './Components/Navbar'
-import userMatchedTo from './Components/userMatchedTo'
+import UserMatchedTo from './Components/userMatchedTo'
 
 // PROPS- NAME, PAST MATCHES
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
             discord: "sid#4551",
             phone: '508 488 8566',
             snapchat: "sidSnap",
-            instagram: "sidIG"
+            instagram: null
         },
         profile: {
             id: '2123546',
@@ -51,7 +51,7 @@ export default function App() {
                     <h1>Jack Bisceglia</h1>
                     <div className="pfp"></div>
                 </div>
-                <div className="main-func">
+                <div style={{display: isMatching ? 'none' : ''}} className="main-func">
                     <h2>Ready to get going?</h2>
                     <div onClick={() => getMatch()} className="match-btn">
                         <h3>Get Matched!</h3>
@@ -62,9 +62,9 @@ export default function App() {
                 {
                     isMatching
                     ?
-                    <userMatchedTo userData={userMatched}/>
+                    <UserMatchedTo userData={userMatched}/>
                     :
-                    null
+                    <></>
                 }
             </div>
         </div>
