@@ -23,5 +23,5 @@ def session_dependency() -> Depends:
         finally:
             db.close()
 
-    session_dep: Session = Depends(get_db_session())
+    session_dep: Session = Depends(get_db_session)
     return session_dep
