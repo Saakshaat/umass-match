@@ -4,7 +4,7 @@ from fastapi import APIRouter
 
 from models import user as user_model
 from resources.crud import create, read
-from schemas import user as user_schemas, contact as contact_model
+from schemas import user as user_schemas
 from . import session_dep
 
 user_router = APIRouter()
@@ -12,12 +12,7 @@ user_router = APIRouter()
 
 @user_router.post("/user/", response_model=user_schemas.UserGet, status_code=201)
 async def create_single_user(user_data: user_schemas.UserPost, db=session_dep):
-    contacts = create.create_single_resource(model=contact_model.Contact, data=user_data.contacts, db=db)
-    user = create.create_single_resource(model=user_model.User, data=user_data, db=db)
-    user.contacts = contacts
-    db.commit()
-
-    return user
+    return create.create_single_resource_with_dependents(model=user_model.User, data=user_data, db=db)
 
 
 @user_router.get("/user/{user_id}/", response_model=user_schemas.UserGet, status_code=200)
