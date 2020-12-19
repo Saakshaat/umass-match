@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  # the database contained within the container
+  database:
+    image: postgres:11
+    environment:
+      - POSTGRES_USER=staging_user
+      - POSTGRES_PASSWORD=staging_pass
+      - POSTGRES_DB=staging_db
+
+  # the actual server
+  umass_match:
+    build: .
+    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 80 --reload"
+    volumes:
+      - .:/umass_match
+    ports:
+      - "80:80"
+    depends_on:
+      - database
