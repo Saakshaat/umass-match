@@ -9,6 +9,7 @@ verify_ssl = true
 sqlalchemy = "*"
 fastapi = "*"
 pydantic = "*"
+uvicorn = "*"
 
 [requires]
 python_version = "3.8"
