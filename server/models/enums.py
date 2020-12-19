@@ -72,3 +72,19 @@ class UMassResidence(enum.Enum):
 
     def __str__(self):
         return self.value
+
+
+class Clubs(enum.Enum):
+    # CICS clubs
+    acm = 'acm'
+    build = 'build'
+    cybersec = 'cybersec'
+    dsc = 'dsc'
+
+    # Isenberg clubs
+    minute_man_fund = 'minute_man_fund'
+
+    # TODO: complete clubs list
+
+    def __str__(self):
+        return self.value
