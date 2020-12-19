@@ -74,7 +74,7 @@ class UMassResidence(enum.Enum):
         return self.value
 
 
-class Clubs(enum.Enum):
+class Club(enum.Enum):
     # CICS clubs
     acm = 'acm'
     build = 'build'
