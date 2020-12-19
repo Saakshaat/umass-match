@@ -90,7 +90,7 @@ class Club(enum.Enum):
         return self.value
 
 
-class Majors(enum.Enum):
+class Major(enum.Enum):
     accounting = 'accounting'
     afro_american_studies = 'afro_american_studies'
     animal_science = 'animal_science'
