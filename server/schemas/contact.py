@@ -7,7 +7,7 @@ class Contact(BaseModel):
     id: int = None
     user_id: int = None
     discord: str = None
-    phone: int = None
+    phone: str = None
     snapchat: str = None
     instagram: str = None
 
@@ -19,7 +19,7 @@ class Contact(BaseModel):
 
     @validator('phone')
     def validate_phone(cls, v):
-        if not bool(re.match('[0-9]{10}$', str(v))):
+        if not bool(re.match('[0-9]{10}$', v)):
             raise ValueError('Phone Number must be valid 10 digit number')
         return v
 

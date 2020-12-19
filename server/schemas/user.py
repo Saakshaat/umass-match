@@ -8,7 +8,6 @@ from .profile import Profile
 
 class UserGeneral(BaseModel):
     first_name: str
-    middle_name: str = None
     last_name: str
     email: str
     contacts: Contact
