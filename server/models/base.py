@@ -5,4 +5,5 @@ Model = declarative_base()
 
 
 class IDMixin:
-    id = Column(Integer(), primary_key=True)
+    id = Column(Integer(), autoincrement=True,
+                primary_key=True)  # replace column type with how OAuth provider identifies
