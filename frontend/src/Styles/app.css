@@ -1,0 +1,16 @@
+/* BASIC SETUP */
+body, #root{
+    padding: 0;
+    margin: 0;
+}
+
+/* BASIC SETUP */
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: bisque;
+    /* Children component's margins were pushing container outwards */
+    overflow:auto
+}
