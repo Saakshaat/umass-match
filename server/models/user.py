@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, DateTime
 from sqlalchemy.orm import relationship
 
 from .base import Model, IDMixin
@@ -13,4 +13,5 @@ class User(Model, IDMixin):
     contacts = relationship("Contact", uselist=False)
 
     profile = relationship("Profile", uselist=False)
+    last_matched = Column(DateTime, nullable=True, default=None)
     # matches: self-referential (https://docs.sqlalchemy.org/en/14/orm/self_referential.html)
