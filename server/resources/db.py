@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, Session
 
 from models import Model
 
-DATABASE_URL = 'postgresql+psycopg2://staging_user:staging_password@database:5432/staging_db'
+DATABASE_URL = 'postgresql+psycopg2://staging_user:staging_pass@database:5432/staging_db'
 
 
 def session_dependency() -> Depends:
