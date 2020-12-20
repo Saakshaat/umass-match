@@ -2,7 +2,14 @@ from typing import List
 
 from pydantic import BaseModel
 
-from models.enums import UMassResidence, Club, Major, VideoGame, Music, Movie
+from models.enums import (
+    UMassResidence,
+    Club,
+    Major,
+    VideoGame,
+    Music,
+    Movie
+)
 
 
 class Profile(BaseModel):

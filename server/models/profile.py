@@ -1,7 +1,14 @@
 from sqlalchemy import Column, Integer, ForeignKey, Enum
 
 from .base import Model, IDMixin
-from .enums import UMassResidence, Club, Major, VideoGame, Music, Movie
+from .enums import (
+    UMassResidence,
+    Club,
+    Major,
+    VideoGame,
+    Music,
+    Movie
+)
 from .types import ArrayOfEnum
 
 
