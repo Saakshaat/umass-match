@@ -10,6 +10,7 @@ sqlalchemy = "*"
 fastapi = "*"
 pydantic = "*"
 uvicorn = "*"
+jose = "*"
 
 [requires]
 python_version = "3.8"
