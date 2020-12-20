@@ -1,12 +1,15 @@
-import React, {useState} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './Styles/app.css'
 import Navbar from './Components/Navbar'
 import UserMatchedTo from './Components/userMatchedTo'
+import { UserDataContext } from './Context/UserDataContext';
 
 // PROPS- NAME, PAST MATCHES
 export default function App() {
     const [isMatching, setIsMatching] = useState(false);
     const [userMatched, setUserMatched] = useState({});
+
+    const {userData, setUserData} = useContext(UserDataContext);
 
     const matchedUser = {
         id: '213546',
@@ -48,8 +51,7 @@ export default function App() {
             <div className="app-wrapper">
                 <div className="name-and-pfp">
                     {/* UPDATE WITH NAME GIVEN BY PROPS */}
-                    <h1>Jack Bisceglia</h1>
-                    <div className="pfp"></div>
+                    <h1>{`Hi, ${userData.first_name} ${userData.last_name}`}</h1>
                 </div>
                 <div style={{display: isMatching ? 'none' : ''}} className="main-func">
                     <h2>Ready to get going?</h2>
@@ -62,11 +64,17 @@ export default function App() {
                 {
                     isMatching
                     ?
-                    <UserMatchedTo userData={userMatched}/>
+                    <UserMatchedTo matchData={userMatched}/>
                     :
                     <></>
                 }
             </div>
         </div>
     )
+}
+
+
+const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
 }

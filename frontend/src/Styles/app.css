@@ -9,23 +9,21 @@ body, #root{
 /* BASIC SETUP */
 .container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
     background-color: #F0F0F0;
     /* Children component's margins were pushing container outwards */
-    /* overflow:auto; */
+    overflow:auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .app-wrapper {
     width: 70%;
     height: 80vh;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
@@ -110,7 +108,9 @@ body, #root{
 }
 
 .details {
+    margin-top: 1rem;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -118,4 +118,33 @@ body, #root{
 .profDetails, .contacts {
     margin: 0 1rem;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.profDetails h3, .contacts h3 {
+    font-weight: 800; 
+    color: #F22C2C;
+    margin-bottom: 1rem
+}
+
+.profDetails * {
+    margin: 0.225em;
+}
+
+.line {
+  height: 16rem;
+  width: .15rem;
+  background-color: #7A0002;  
+  margin: 0 .5rem;
+}
+
+.email-tag {
+    cursor: pointer;
+    transition: .25s;
+} 
+
+.email-tag:hover{
+    color: #F22C2C;
 }

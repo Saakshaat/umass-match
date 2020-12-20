@@ -1,0 +1,75 @@
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: #F0F0F0;
+    /* Children component's margins were pushing container outwards */
+    overflow:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prof-wrapper {
+    width: 70%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin:  1rem 0 0 0;
+}
+
+.prof-wrapper p{
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.line2 {
+    width: 26rem;
+    height: .15rem;
+    background-color: #7A0002;  
+    margin: 0.45rem 0;
+}
+
+.general, .contacts, .prof, .match-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.1rem;
+    flex-wrap: wrap;
+}
+
+.general h2, .contacts h2, .prof h2, .match-history h2{
+    margin: 0;
+}
+
+.general-data, .contact-data, .prof-data, .match-data{
+    display: flex;
+}
+
+.general-data h3, .contact-data h3, .prof-data h3, .match-data h3{
+    margin: 0.5rem 1rem;
+    color: #7A0002;
+}
+
+.general-data h3 span, .contact-data h3 span, .prof-data h3 span, .match-data h3 span{
+    font-weight: 400;
+    font-size: 97.5%;
+    color: black;
+}
+
+.match-data {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.match-history h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
