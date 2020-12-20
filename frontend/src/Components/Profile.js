@@ -13,7 +13,10 @@ export default function Profile() {
         <div className="container">
             <Navbar />
             <div className="prof-wrapper">
-                <h1 className="title">{userData.first_name}'s Profile</h1>
+                <div className="title-and-edit-button">
+                    <h1 className="title">{userData.first_name}'s Profile</h1>
+                    <button onClick={() => {setIsEditing(!isEditing)}} className="edit-prof">{!isEditing ? 'Edit' : 'Submit' }</button>
+                </div>
                 <div className="line2"></div>
                 <p>Update your profile and your next match will </p>
                 <p>be made based on your new preferences.</p>
@@ -114,3 +117,46 @@ const parseDate = () => {
 
     return `${month}/${day}/${year}`
 }
+
+
+
+// const getMatch = () => {
+//     fetch(`http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/${userData.contacts.user_id}/match`, {
+//         method: 'POST',
+//         headers: {
+//           'Accept': 'application/json',
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(makePost(userData))
+//     })
+//     .then((res) => res.json())
+//     .then(data => {
+//         console.log(data)
+//         // setUserMatched(data);
+//     })
+//     setIsMatching(!isMatching);
+// }
+
+
+// const makePost = () => {
+//     return {
+//         "first_name": userData.first_name,
+//         "last_name": userData.last_name,
+//         "email": userData.email,
+//         "contacts": {
+//             "discord": userData.contacts.discord,
+//             "phone": userData.contacts.phone,
+//             "snapchat": userData.contacts.snapchat
+//         },
+//         "profile": {
+//             "umass_residences": userData.profile.umass_residences,
+//             "clubs": userData.profile.clubs,
+//             "majors": userData.profile.majors,
+//             "grad_year": userData.profile.grad_year,
+//             "video_games": userData.profile.video_games,
+//             "music": userData.profile.music,
+//             "movies": userData.profile.movies
+//         }
+//     }
+    
+// }
