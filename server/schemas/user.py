@@ -1,8 +1,11 @@
 import re
+from datetime import datetime
+from typing import List
 
 from pydantic import BaseModel, validator
 
 from .contact import Contact
+from .match import Match
 from .profile import Profile
 
 
@@ -25,6 +28,8 @@ class UserPost(UserGeneral):
 
 class UserGet(UserGeneral):
     id: int
+    last_matched_time: datetime = None
+    previous_matches: List[Match] = []
 
     class Config:
         orm_mode = True
