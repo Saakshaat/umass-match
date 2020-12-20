@@ -221,3 +221,33 @@ class Music(enum.Enum):
 
     def __str__(self):
         return self.value
+
+
+class Movie(enum.Enum):
+    surreal = 'surreal'
+    action = 'action'
+    adventure = 'adventure'
+    comedy = 'comedy'
+    crime = 'crime'
+    drama = 'drama'
+    fantasy = 'fantasy'
+    historical = 'historical'
+    historical_fiction = 'historical_fiction'
+    horror = 'horror'
+    magical_realism = 'magical_realism'
+    mystery = 'mystery'
+    paranoid_fiction = 'paranoid_fiction'
+    philosphical = 'philosphical'
+    political = 'political'
+    romance = 'romance'
+    saga = 'saga'
+    satire = 'satire'
+    science_fiction = 'science_fiction'
+    social = 'social'
+    speculative = 'speculative'
+    thriller = 'thriller'
+    urban = 'urban'
+    western = 'western'
+
+    def __str__(self):
+        return self.value

@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, ForeignKey, Enum, Boolean
+from sqlalchemy import Column, Integer, ForeignKey, Enum
 
 from .base import Model, IDMixin
-from .enums import UMassResidence, Club, Major, VideoGame, Music
+from .enums import UMassResidence, Club, Major, VideoGame, Music, Movie
 from .types import ArrayOfEnum
 
 
@@ -18,4 +18,4 @@ class Profile(Model, IDMixin):
 
     video_games = Column(ArrayOfEnum(Enum(VideoGame)))
     music = Column(ArrayOfEnum(Enum(Music)))
-    movies = Column(Boolean, nullable=True)  # shift to ArrayOfEnum for what kind of movies
+    movies = Column(ArrayOfEnum(Enum(Movie)))
