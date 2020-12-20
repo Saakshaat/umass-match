@@ -7,6 +7,7 @@ class Match(BaseModel):
     id: int = None
     current_user_id: int = None
     other_user_id: int
+    other_user_name: str
     matched_at: datetime = None
 
     class Config:
