@@ -1,4 +1,5 @@
 from datetime import datetime
+from operator import attrgetter
 
 from fastapi import APIRouter
 
@@ -10,9 +11,8 @@ from . import session_dep
 matching_router = APIRouter()
 
 
-@matching_router.post('/user/{user_id}/match/', response_model=user_schemas.UserGet, status_code=201)
-async def add_new_match(user_id: int, match_data: match_schema.Match, db=session_dep):
-    other_user_id = match_data.other_user_id
+@matching_router.post('/user/{user_id}/match/{other_user_id}', response_model=user_schemas.UserGet, status_code=201)
+async def add_new_match(user_id: int, other_user_id: int, db=session_dep):
     user_data = read.read_single_resource(model=user_model.User, identifier='id', value=user_id, db=db)
 
     current_match_data = match_schema.Match(current_user_id=user_id, other_user_id=other_user_id)
@@ -34,3 +34,12 @@ async def add_new_match(user_id: int, match_data: match_schema.Match, db=session
     print(user_data.previous_matches)
 
     return user_data
+
+
+@matching_router.get("/user/{user_id}/match/latest/", response_model=user_schemas.UserGet, status_code=200)
+async def get_latest_match(user_id: int, db=session_dep):
+    user_data = read.read_single_resource(model=user_model.User, identifier='id', value=user_id, db=db)
+
+    latest_match = max(user_data.previous_matches, key=attrgetter('matched_at'))
+
+    return read.read_single_resource(model=user_model.User, identifier='id', value=latest_match.other_user_id, db=db)
