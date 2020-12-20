@@ -1,16 +1,16 @@
 .landing {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
     background-color: #e6e6e6;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
 }
 
 .left{
     width: 40vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,22 +28,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
 }
 
-.login {
+.login, .sign-up {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login form{
+.login form, .sign-up form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.login form input{
+.login form input, .sign-up form input{
     margin: 1rem;
+    border: none;
+    border-bottom: 2px solid #F22C2C;
+    width: 12rem;
+    outline: none;
 }

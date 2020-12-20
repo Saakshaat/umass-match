@@ -15,7 +15,7 @@ export default function Navbar() {
             <div className="options">
                 <h3 onClick={() => history.push('/home')}>Home</h3>
                 <Link to="/profile" onClick={() => history.push('/profile')} className="nav-item"><h3>Profile</h3></Link>
-                <h3>Logout</h3> 
+                <h3 onClick={() => history.push('/')}>Logout</h3> 
             </div>
         </div>
     )
