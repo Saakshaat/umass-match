@@ -185,8 +185,69 @@ class Major(enum.Enum):
     theatre = 'theatre'
     turfgrass_management = 'turfgrass_management'
     turfgrass_science_and_management = 'turfgrass_science_and_management'
-    university_withouth_walls = 'university_withouth_walls'
+    university_without_walls = 'university_without_walls'
     women_gender_sexuality_studies = 'women_gender_sexuality_studies'
+
+    def __str__(self):
+        return self.value
+
+
+class VideoGame(enum.Enum):
+    rpg = 'rpg'
+    shooter = 'shooter'
+    strategy = 'strategy'
+    rhythm = 'rhythm'
+    puzzle = 'puzzle'
+    visual = 'visual'
+    novel = 'novel'
+    action_adventure = 'action_adventure'
+    platformer = 'platformer'
+    mmo = 'mmo'
+
+    def __str__(self):
+        return self.value
+
+
+class Music(enum.Enum):
+    jazz = 'jazz'
+    blues = 'blues'
+    country = 'country'
+    lofi = 'lofi'
+    hip_hop = 'hip_hop'
+    electronic = 'electronic'
+    funk = 'funk'
+    classical = 'classical'
+    r_and_b = 'r_and_b'
+
+    def __str__(self):
+        return self.value
+
+
+class Movie(enum.Enum):
+    surreal = 'surreal'
+    action = 'action'
+    adventure = 'adventure'
+    comedy = 'comedy'
+    crime = 'crime'
+    drama = 'drama'
+    fantasy = 'fantasy'
+    historical = 'historical'
+    historical_fiction = 'historical_fiction'
+    horror = 'horror'
+    magical_realism = 'magical_realism'
+    mystery = 'mystery'
+    paranoid_fiction = 'paranoid_fiction'
+    philosphical = 'philosphical'
+    political = 'political'
+    romance = 'romance'
+    saga = 'saga'
+    satire = 'satire'
+    science_fiction = 'science_fiction'
+    social = 'social'
+    speculative = 'speculative'
+    thriller = 'thriller'
+    urban = 'urban'
+    western = 'western'
 
     def __str__(self):
         return self.value
