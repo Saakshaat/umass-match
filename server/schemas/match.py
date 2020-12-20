@@ -11,3 +11,13 @@ class Match(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class FilterParams(BaseModel):
+    majors: bool = False
+    clubs: bool = False
+    residences: bool = False
+    grad_year: bool = False
+    video_games: bool = False
+    music: bool = False
+    movies: bool = False
