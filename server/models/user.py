@@ -2,6 +2,7 @@ from sqlalchemy import Column, String, DateTime
 from sqlalchemy.orm import relationship
 
 from .base import Model, IDMixin
+from .match import Match
 
 
 class User(Model, IDMixin):
@@ -13,5 +14,6 @@ class User(Model, IDMixin):
     contacts = relationship("Contact", uselist=False)
 
     profile = relationship("Profile", uselist=False)
-    last_matched = Column(DateTime, nullable=True, default=None)
-    # matches: self-referential (https://docs.sqlalchemy.org/en/14/orm/self_referential.html)
+
+    last_matched_time = Column(DateTime, nullable=True, default=None)
+    previous_matches = relationship('Match', foreign_keys=[Match.current_user_id], uselist=True)
