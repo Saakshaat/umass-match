@@ -25,7 +25,7 @@ def get_all_matchable_users(user_data, db: Session):
     past_matched_ids_list = [match.other_user_id for match in user_data.previous_matches]
     # an active user is someone who has not been matched in the past 3 days and
     matchable_users = db.query(User).filter(User.id != user_data.id).filter(User.id.notin_(
-        past_matched_ids_list)).filter(or_(User.last_matched_time is None,
+        past_matched_ids_list)).filter(or_(User.last_matched_time == None,
                                            User.last_matched_time < three_days_ago)).all()  # TODO: convert into subquery for builder pattern
 
     return matchable_users
