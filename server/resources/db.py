@@ -7,12 +7,11 @@ from sqlalchemy.orm import sessionmaker, Session
 from models import Model
 
 # use AWS RDS instance using it's Connection URL from env or Docker's container's Postgres instance
-DATABASE_URL = os.environ.get('DB_URL', 'postgresql+psycopg2://staging_user:staging_pass@database:5432/staging_db')
+DATABASE_URL = os.environ.get("DB_URL", "postgresql+psycopg2://staging_user:staging_pass@database:5432/staging_db")
 
 
 def session_dependency() -> Depends:
     engine = create_engine(DATABASE_URL, pool_size=20, max_overflow=0)
-
     local_session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
     Model.metadata.create_all(bind=engine)
