@@ -3,7 +3,6 @@ import datetime
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
-from models.profile import Profile
 from models.user import User
 
 
@@ -29,14 +28,102 @@ def get_all_matchable_users(user_data, db: Session):
     return matchable_users
 
 
-def filter_users_by_profile(user_data, prev_subquery, db: Session):
-    filtered_users = db.query(User, prev_subquery).join(User.profile).filter(
-        bool(set(Profile.majors) & set(user_data.profile.majors))).subquery()
+class Filter:
+    """
+    This class implements a Filter object which has filter methods working on the Builder design pattern.
 
-    if len(filtered_users) == 0:
-        return db.query(User, prev_subquery).all()
+    ~~~~~~~
+    Thank you Prof Marius
+    ~~~~~~~
+    """
 
-    return filtered_users
+    def __init__(self, user_data, matchable_users):
+        self.user_data = user_data
+        self.matchable_users = matchable_users
+
+    def filter_users_by_majors(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if bool(set(user.profile.majors) & set(self.user_data.profile.majors)):
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
+
+    def filter_users_by_clubs(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if bool(set(user.profile.clubs) & set(self.user_data.profile.clubs)):
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
+
+    def filter_users_by_residences(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if bool(set(user.profile.umass_residences) & set(self.user_data.profile.umass_residences)):
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
+
+    def filter_by_grad_year(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if user.profile.grad_year == self.user_data.profile.grad_year:
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
+
+    def filter_by_video_games(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if user.profile.video_games and self.user_data.profile.video_games:
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
+
+    def filter_by_music(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if user.profile.music and self.user_data.profile.music:
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
+
+    def filter_by_movies(self):
+        filtered_users = []
+        for user in self.matchable_users:
+            if user.profile.movies and self.user_data.profile.movies:
+                filtered_users.append(user)
+
+        if len(filtered_users) == 0:
+            return self
+
+        self.matchable_users = filtered_users
+        return self
 
 
 def match_user(user_id: int, db: Session):
@@ -44,4 +131,16 @@ def match_user(user_id: int, db: Session):
 
     matchable_users = get_all_matchable_users(user_data, db)
 
-    return matchable_users
+    filters = Filter(user_data=user_data,
+                     matchable_users=matchable_users) \
+        .filter_users_by_majors() \
+        .filter_users_by_clubs() \
+        .filter_users_by_residences() \
+        .filter_by_grad_year() \
+        .filter_by_video_games() \
+        .filter_by_music() \
+        .filter_by_movies()
+
+    filtered_users = filters.matchable_users
+
+    return filtered_users
