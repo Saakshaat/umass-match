@@ -95,7 +95,7 @@ class Filter:
     def filter_by_video_games(self):
         filtered_users = []
         for user in self.matchable_users:
-            if user.profile.video_games and self.user_data.profile.video_games:
+            if bool(set(user.profile.video_games) & set(self.user_data.profile.video_games)):
                 filtered_users.append(user)
 
         if not filtered_users:
@@ -107,7 +107,7 @@ class Filter:
     def filter_by_music(self):
         filtered_users = []
         for user in self.matchable_users:
-            if user.profile.music and self.user_data.profile.music:
+            if bool(set(user.profile.music) & set(self.user_data.profile.music)):
                 filtered_users.append(user)
 
         if not filtered_users:
@@ -119,7 +119,7 @@ class Filter:
     def filter_by_movies(self):
         filtered_users = []
         for user in self.matchable_users:
-            if user.profile.movies and self.user_data.profile.movies:
+            if bool(set(user.profile.movies) & set(self.user_data.profile.movies)):
                 filtered_users.append(user)
 
         if not filtered_users:
