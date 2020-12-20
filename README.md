@@ -1,4 +1,4 @@
-# umass-match
+# u-match
 
 U-Match is a first of its kind people-matching platform. Built to bring the community together and provide our users with a platform to meet and socialize with their UMass fellows, U-Match focuses on matching people based on commonalities.
 
