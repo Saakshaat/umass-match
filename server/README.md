@@ -28,3 +28,16 @@ We have a separate `crud` package which is used to handle different read and wri
 The `create` module in this package has a very interesting function for automatically detecting, assessing and resolving relationships for a given object's data. This uses [SQLAlchemy's Inspector](https://docs.sqlalchemy.org/13/core/inspection.html) to identify all relationships for a model and compute the given data accordingly.
 
 `models` and `schemas` are separated in their separate packages and their usage is more or less on-call. Tables corresponding to all models are created when the database sessions injection is created during the server's startup.
+
+### Matching
+Matches between 2 users are modelled by a `Match` model which stored ForeignKey references to the current user and the other (matched user). When the client requests a match for a given user, the server first checks if the user has been matched in the past 3 days and if so, rejects the request. The matching algorithm works in 4 parts:
+
+1. For the given user, gets a list of all matchable users. A matchable user is someone who's not been matched with this user before (User's list of previous_matches: Match objects) and who's either not been matched ever before or in the past 3 days.
+
+2. Using this list of matchable users and the current user's data, create a Filter object. Filter is a class implementing the FluentAPI pattern. It has methods to filter its own list of matchable users by comparing them to the current user by specific params. Each method returns the object itself (hence Fluent design).
+
+3. A client-request for creating a match also sends, in the body, a list of booleans (profile fields) representing whether the user wants to match basis this field or not. If a boolean is true, its filter method is called on the Filter object created in (2). If any filter method results in an empty list, we disregard its result.
+
+4. From the final filtered list, we return a random user.
+
+After recieving the matched user, we create 2 `Match` objects for both users and update their `last_matched_time` (hence starting a cooldown for their next match) and commit all these changes to the database.
