@@ -31,6 +31,7 @@ def create_single_resource_with_dependents(model: Model, data: BaseModel, db):
         # relationship object not present
         if relationship.key not in data.fields or getattr(data, relationship.key) is None:
             setattr(primary_resource, relationship.key, [] if relationship.uselist else None)
+            continue
 
         if relationship.uselist:  # one-to-many or many-to-one relationship
             relationship_list = getattr(primary_resource, relationship.key)
