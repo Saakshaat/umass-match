@@ -1,10 +1,13 @@
+import os
+
 from fastapi import Depends
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
 from models import Model
 
-DATABASE_URL = 'postgresql+psycopg2://staging_user:staging_pass@database:5432/staging_db'
+# use AWS RDS instance using it's Connection URL from env or Docker's container's Postgres instance
+DATABASE_URL = os.environ.get('DB_URL', 'postgresql+psycopg2://staging_user:staging_pass@database:5432/staging_db')
 
 
 def session_dependency() -> Depends:

@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   # the database contained within the container
+  # TODO: remove database service in staging and prod since we use RDS instance
   database:
     image: postgres:11
     environment:
