@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from models.enums import UMassResidence, Club, Major
+from models.enums import UMassResidence, Club, Major, VideoGame
 
 
 class Profile(BaseModel):
@@ -11,7 +11,7 @@ class Profile(BaseModel):
     clubs: List[Club] = []
     majors: List[Major] = []
     grad_year: int
-    video_games: bool = False
+    video_games: List[VideoGame] = []
     music: bool = False
     movies: bool = False
 

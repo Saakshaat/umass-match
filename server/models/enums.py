@@ -185,8 +185,24 @@ class Major(enum.Enum):
     theatre = 'theatre'
     turfgrass_management = 'turfgrass_management'
     turfgrass_science_and_management = 'turfgrass_science_and_management'
-    university_withouth_walls = 'university_withouth_walls'
+    university_without_walls = 'university_without_walls'
     women_gender_sexuality_studies = 'women_gender_sexuality_studies'
+
+    def __str__(self):
+        return self.value
+
+
+class VideoGame(enum.Enum):
+    rpg = 'rpg'
+    shooter = 'shooter'
+    strategy = 'strategy'
+    rhythm = 'rhythm'
+    puzzle = 'puzzle'
+    visual = 'visual'
+    novel = 'novel'
+    action_adventure = 'action_adventure'
+    platformer = 'platformer'
+    mmo = 'mmo'
 
     def __str__(self):
         return self.value
