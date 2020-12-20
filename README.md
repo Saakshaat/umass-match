@@ -36,4 +36,4 @@ In the future we hope to:
 
 ### Contributing
 
-Refer to the [Contribution doc]()
+We're an open source effort towards fostering a nice community. If you're interested in contributing refer to the [Contribution doc](https://github.com/Saakshaat/umass-match/blob/main/CONTRIBUTING.md).
