@@ -6,7 +6,9 @@ Our users can request a match and, unlike most other matching-apps, U-Match will
 
 The only catch is that you can only request a match every 3 days! This is meant to give our users the time to reach out to their matches and take the time to get to know them. Since U-Match creates the matches based on our own algorithm, which also randomly chooses from the final list of filtered users, it opens up the possibilities for our users to meet new people. Our app also makes sure that our users only match with people they've never matched with before, creating greater potential for them to expand their social network.
 
-The beauty of our project lies in its simplicity. U-Match only requires basic data like the user's major(/s), clubs, where they've lived on UMass and their interests, and uses these simple parameters to generate an intelligent match. There is a lot of value in being minimal and our app explores this philosophy down to its algorithm.
+The beauty of our project lies in its simplicity. U-Match only requires basic data like the user's major(/s), clubs, where they've lived on UMass and their interests, and uses 
+these simple parameters to generate an intelligent match. There is a lot of value in being minimal and our app explores this philosophy down to its algorithm.
+
 
 ### Matching
 
@@ -23,3 +25,15 @@ Since all users input/edit these values prior to the matching, initating a reque
 Our application allows the user to choose, for each match, which criteria they'd like to match by and unselecting any of these criteria removes its filter in the algorithm. We can achieve this using a [Fluent Design Pattern](https://en.wikipedia.org/wiki/Fluent_interface).
 
 Once a match is created, both users get added to each other's list of latest matches and the other matched user gets notified by email about their new match.
+
+### Roadmap
+
+Currently, this project functions with a backend and a web client. However the server API is can function as a standalone and we'd like to develop it in that direction.
+
+In the future we hope to:
+- have UMass's OAuth so that we can authenticate UMass students with through a more secure solution as opposed to simply validating their email domains
+- support better documentation. Most of our backend codebase is already documented in comments so we could use Sphinx to generate .rst files
+
+### Contributing
+
+Refer to the [Contribution doc]()
