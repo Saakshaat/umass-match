@@ -13,8 +13,8 @@ async def root():
 
 
 from .user import user_router
-from .matching import matching_router
+from .match import match_router
 
 # add individual routers to top-level router
 main_router.include_router(user_router)
-main_router.include_router(matching_router)
+main_router.include_router(match_router)
