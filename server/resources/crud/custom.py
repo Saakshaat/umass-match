@@ -141,25 +141,25 @@ def match_user(user_id: int, filter_params: FilterParams, db: Session):
                       matchable_users=matchable_users)
 
     if filter_params.majors:
-        filtered.filter_users_by_majors()
+        filtered = filtered.filter_users_by_majors()
 
     if filter_params.clubs:
-        filtered.filter_users_by_clubs()
+        filtered = filtered.filter_users_by_clubs()
 
     if filter_params.residences:
-        filtered.filter_users_by_residences()
+        filtered = filtered.filter_users_by_residences()
 
     if filter_params.grad_year:
-        filtered.filter_by_grad_year()
+        filtered = filtered.filter_by_grad_year()
 
     if filter_params.video_games:
-        filtered.filter_by_video_games()
+        filtered = filtered.filter_by_video_games()
 
     if filter_params.music:
-        filtered.filter_by_music()
+        filtered = filtered.filter_by_music()
 
     if filter_params.movies:
-        filtered.filter_by_movies()
+        filtered = filtered.filter_by_movies()
 
     filtered_users = filtered.matchable_users
 
