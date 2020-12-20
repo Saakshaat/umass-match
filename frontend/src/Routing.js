@@ -1,8 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import App from './App.js'
+import Landing from './Components/Landing'
 import Profile from './Components/Profile.js'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { UserDataContext } from './Context/UserDataContext'
+import ProtectedRoute from './Components/ProtectedRoute'
+import { AuthContext } from './Context/AuthContext.js';
 
 const currentUser = {
 
@@ -63,33 +66,40 @@ const currentUser = {
 
 function Routing() {
   const [userData, setUserData] = useState(false);
+  const [authed, setAuthed] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
+  
   useEffect(() => {
-    setUserData(currentUser)
+    console.log('executing');
+    fetch("http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/1/")
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      setUserData(data)
+      setIsLoading(false)
+    })
+    .catch(err => console.log(err))
   },
   [])
-  // useEffect(() => {
-  //   fetch('http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/1')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setUserData(currentUser)
-  //     console.log(data)
-  //   })
-  //   .catch(err => console.log(err))
-  // },
-  // [])
 
-
-  return (
+  return isLoading
+  ?
+  <h1>Loading...</h1>
+  :
+  (
     // UPDATE FOR ROUTING LATER ON
-    <UserDataContext.Provider value={{userData, setUserData}}>
-    <Router>
-      <Switch>
-        <Route path="/" exact component={App}/>
-        <Route path="/profile" component={Profile}/>
-      </Switch>
-    </Router>
-    </UserDataContext.Provider>
+      <AuthContext.Provider value={{authed, setAuthed}}>
+      <UserDataContext.Provider value={{userData, setUserData}}>
+      <Router>
+        <Switch>
+              <Route path="/" exact component={Landing}/>
+              <Route path="/profile" exact component={Profile}/>
+              <ProtectedRoute component={App}/>
+          </Switch>
+      </Router>
+      </UserDataContext.Provider>
+      </AuthContext.Provider>
   );
 }
 
