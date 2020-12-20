@@ -10,7 +10,7 @@ class User(Model, IDMixin):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
 
-    email = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False)
     contacts = relationship("Contact", uselist=False)
 
     profile = relationship("Profile", uselist=False)
