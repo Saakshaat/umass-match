@@ -10,7 +10,7 @@ app = FastAPI()
 # Add CORS permissions
 app.add_middleware(
 	CORSMiddleware,
-	allows_origins=["https://umatch.space", "http://umatch.space", "http://localhost", "http://localhost:8080"],
+	allow_origins=["*"], # shift to authenticated domain
 	allow_credentials=True,
 	allow_methods=["*"],
 	allow_headers=["*"]
