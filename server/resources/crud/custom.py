@@ -4,6 +4,7 @@ from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
 from models.user import User
+from schemas.match import FilterParams
 
 
 def get_all_matchable_users(user_data, db: Session):
@@ -126,21 +127,34 @@ class Filter:
         return self
 
 
-def match_user(user_id: int, db: Session):
+def match_user(user_id: int, filter_params: FilterParams, db: Session):
     user_data = db.query(User).get(user_id)
 
     matchable_users = get_all_matchable_users(user_data, db)
 
-    filters = Filter(user_data=user_data,
-                     matchable_users=matchable_users) \
-        .filter_users_by_majors() \
-        .filter_users_by_clubs() \
-        .filter_users_by_residences() \
-        .filter_by_grad_year() \
-        .filter_by_video_games() \
-        .filter_by_music() \
-        .filter_by_movies()
+    filtered = Filter(user_data=user_data,
+                      matchable_users=matchable_users)
+    if filter_params.majors:
+        filtered = filtered.filter_users_by_majors()
 
-    filtered_users = filters.matchable_users
+    if filter_params.clubs:
+        filtered = filtered.filter_users_by_clubs()
+
+    if filter_params.residences:
+        filtered = filtered.filter_users_by_residences()
+
+    if filter_params.grad_year:
+        filtered = filtered.filter_by_grad_year()
+
+    if filter_params.video_games:
+        filtered = filtered.filter_by_video_games()
+
+    if filter_params.music:
+        filtered = filtered.filter_by_music()
+
+    if filter_params.movies:
+        filtered = filtered.filter_by_movies()
+
+    filtered_users = filtered.matchable_users
 
     return filtered_users
