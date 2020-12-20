@@ -21,6 +21,7 @@ The crux of U-Match lies in its matching algorihtm. It matches users by filterin
 - Video games
 - Music
 - Movies
+
 Since all users input/edit these values prior to the matching, initating a request simply involves clicking a button which begins the algorithm. Potenial matches are other users who haven't matched with the current user before or haven't requested a match in the past 3 days either. From this group of users, our algorithms starts filtering people based on the above 7 criteria.
 
 Our application allows the user to choose, for each match, which criteria they'd like to match by and unselecting any of these criteria removes its filter in the algorithm. We can achieve this using a [Fluent Design Pattern](https://en.wikipedia.org/wiki/Fluent_interface).
