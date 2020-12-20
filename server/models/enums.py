@@ -206,3 +206,18 @@ class VideoGame(enum.Enum):
 
     def __str__(self):
         return self.value
+
+
+class Music(enum.Enum):
+    jazz = 'jazz'
+    blues = 'blues'
+    country = 'country'
+    lofi = 'lofi'
+    hip_hop = 'hip_hop'
+    electronic = 'electronic'
+    funk = 'funk'
+    classical = 'classical'
+    r_and_b = 'r_and_b'
+
+    def __str__(self):
+        return self.value
