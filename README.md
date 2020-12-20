@@ -1,3 +1,5 @@
+<p align="center"><img width="200" src="https://cdn.discordapp.com/attachments/761348725070233601/790150077535879188/Frame_2.png"</p>
+
 # umass-match
 A space for meeting your UMass peers.
 
