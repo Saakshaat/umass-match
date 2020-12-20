@@ -135,7 +135,7 @@ def match_user(user_id: int, filter_params: FilterParams, db: Session):
     matchable_users = get_all_matchable_users(user_data, db)
 
     if not matchable_users:  # not possible matches currently
-        raise HTTPException(status_code=403, detail='All users matched for current user!')
+        raise HTTPException(status_code=403, detail='No matches available for current user!')
 
     filtered = Filter(user_data=user_data,
                       matchable_users=matchable_users)
