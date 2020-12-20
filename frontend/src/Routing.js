@@ -5,58 +5,58 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { UserDataContext } from './Context/UserDataContext'
 
 const currentUser = {
-  "first_name": "Zach",
-  "last_name": "Tower",
-  "email": "zacht@umass.edu",
+
+  "first_name": "Saakshaat",
+  "last_name": "Singh",
+  "email": "saakshaatsin@umass.edu",
   "contacts": {
-      "id": 4,
-      "user_id": 4,
-      "discord": "zach#4322",
-      "phone": "1001001001",
-      "snapchat": "zeee",
+      "id": 1,
+      "user_id": 1,
+      "discord": "saakshaat#5763",
+      "phone": "1234567890",
+      "snapchat": "saakshaat_sama",
       "instagram": null
   },
   "profile": {
-      "user_id": 4,
+      "user_id": 1,
       "umass_residences": [
-          "birch",
-          "john_adams"
+          "sycamore",
+          "maple"
       ],
-      "clubs": [],
+      "clubs": [
+          "acm",
+          "dsc"
+      ],
       "majors": [
-          "computer_science"
+          "computer_science",
+          "mathematics"
       ],
-      "grad_year": 2023,
-      "video_games": false,
-      "music": true,
-      "movies": true
+      "grad_year": 2022,
+      "video_games": [
+          "action_adventure",
+          "shooter"
+      ],
+      "music": [
+          "lofi",
+          "jazz",
+          "country",
+          "classical"
+      ],
+      "movies": [
+          "comedy",
+          "horror",
+          "historical"
+      ]
   },
-  "id": 4,
-  "last_matched_time": "2020-12-20T04:51:07.183374",
+  "id": 1,
+  "last_matched_time": "2020-12-20T07:36:08.762155",
   "previous_matches": [
       {
-          "id": 46,
-          "current_user_id": 4,
-          "other_user_id": 3,
-          "matched_at": "2020-12-20T02:33:22.268123"
-      },
-      {
-          "id": 70,
-          "current_user_id": 4,
-          "other_user_id": 3,
-          "matched_at": "2020-12-20T02:36:15.640283"
-      },
-      {
-          "id": 106,
-          "current_user_id": 4,
-          "other_user_id": 1,
-          "matched_at": "2020-12-20T04:41:15.889166"
-      },
-      {
-          "id": 108,
-          "current_user_id": 4,
+          "id": 1,
+          "current_user_id": 1,
           "other_user_id": 2,
-          "matched_at": "2020-12-20T04:51:07.132852"
+          "other_user_name": "Zach Tower",
+          "matched_at": "2020-12-20T07:36:08.646193"
       }
   ]
 }
@@ -68,6 +68,17 @@ function Routing() {
     setUserData(currentUser)
   },
   [])
+  // useEffect(() => {
+  //   fetch('http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/1')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setUserData(currentUser)
+  //     console.log(data)
+  //   })
+  //   .catch(err => console.log(err))
+  // },
+  // [])
+
 
   return (
     // UPDATE FOR ROUTING LATER ON
