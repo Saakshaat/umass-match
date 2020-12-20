@@ -9,6 +9,7 @@ The only catch is that you can only request a match every 3 days! This is meant 
 The beauty of our project lies in its simplicity. U-Match only requires basic data like the user's major(/s), clubs, where they've lived on UMass and their interests, and uses 
 these simple parameters to generate an intelligent match. There is a lot of value in being minimal and our app explores this philosophy down to its algorithm.
 
+![Landing Page](https://i.imgur.com/NW9Zdip.png)
 
 ### Matching
 
