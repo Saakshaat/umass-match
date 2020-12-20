@@ -24,6 +24,12 @@
     margin: 0.5rem;
 }
 
+.nav-item {
+    text-decoration: none;
+    color: #F0F0F0;
+
+}
+
 .logo {
     cursor: pointer;
     width: auto;
