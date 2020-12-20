@@ -7,41 +7,34 @@ import { UserDataContext } from './Context/UserDataContext';
 // PROPS- NAME, PAST MATCHES
 export default function App() {
     const [isMatching, setIsMatching] = useState(false);
+    const [responseErr, setResponseErr] = useState('')
+    const [cantMatch, setCantMatch] = useState(false)
     const [userMatched, setUserMatched] = useState({});
 
     const {userData, setUserData} = useContext(UserDataContext);
 
-    const matchedUser = {
-        id: '213546',
-        first_name: "Sid",
-        last_name: "Raju",
-        email: "sid@umass.edu",
-        contacts: {
-            id: '213546',
-            user_id: '213546',
-            discord: "sid#4551",
-            phone: '508 488 8566',
-            snapchat: "sidSnap",
-            instagram: null
-        },
-        profile: {
-            id: '2123546',
-            user_id: '213546',
-            grad_year: 2023,
-            umass_residences: ['van_meter', 'adams'],
-            clubs: ['build'],
-            majors: ['computer_science'],
-            video_games: false,
-            music: false,
-            movies: true
-        }
-    }
-
     const getMatch = () => {
-        // fetch()
-        //     .then(() => )
-        setUserMatched(matchedUser);
-        setIsMatching(!isMatching);
+        fetch(`http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/${userData.contacts.user_id}/match`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(makePost(userData))
+        })
+        .then((res) => res.json())
+        .then(data => {
+            if ('detail' in data) {
+                setCantMatch(true)
+                setIsMatching(!isMatching);
+                setResponseErr(data.detail)
+            }
+            else{
+                setUserMatched(data);
+                setIsMatching(!isMatching);
+            }
+        })
+        .catch(err => console.log(err))
     }
 
 
@@ -64,7 +57,11 @@ export default function App() {
                 {
                     isMatching
                     ?
-                    <UserMatchedTo matchData={userMatched}/>
+                    cantMatch
+                        ?
+                        <h3 style={{textAlign: 'center'}}>{responseErr}</h3>
+                        :
+                        <UserMatchedTo matchData={userMatched}/>
                     :
                     <></>
                 }
@@ -77,4 +74,26 @@ export default function App() {
 const capitalize = (s) => {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+const makePost = (userData) => {
+    return {
+        "first_name": userData.first_name,
+        "last_name": userData.last_name,
+        "email": userData.email,
+        "contacts": {
+            "discord": userData.contacts.discord,
+            "phone": userData.contacts.phone,
+            "snapchat": userData.contacts.snapchat
+        },
+        "profile": {
+            "umass_residences": userData.profile.umass_residences,
+            "clubs": userData.profile.clubs,
+            "majors": userData.profile.majors,
+            "grad_year": userData.profile.grad_year,
+            "video_games": userData.profile.video_games,
+            "music": userData.profile.music,
+            "movies": userData.profile.movies
+        }
+    }   
 }

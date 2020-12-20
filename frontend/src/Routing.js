@@ -72,10 +72,9 @@ function Routing() {
   
   useEffect(() => {
     console.log('executing');
-    fetch("http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/1/")
+    fetch("http://ec2-52-14-250-55.us-east-2.compute.amazonaws.com/user/15/")
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       setUserData(data)
       setIsLoading(false)
     })
